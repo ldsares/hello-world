@@ -24,7 +24,7 @@ public class Main {
        Monster flamegolem = new Monster("화염골렘", 30, 20, 250);
        Monster icequeen = new Monster("얼음여왕", 35, 22, 250);
        Monster dragon = new Monster("드래곤", 40, 25, 350);
-       Monster devilking = new Monster("마왕", 60, 30, 400);
+       Monster devilking = new Monster("마왕", 50, 30, 400);
 
       // 1. 게임시작, 인트로
       itr.logo();
@@ -197,29 +197,36 @@ public class Main {
       }
 
       
-      // 4. 비밀상점 (돈으로 아이템 구입가능)
-      
-      
-      
-      // 5. 중간보스 (드래곤)
-      ment.stagefive();
-      dragon.printMent();
-      dragon.printStats();
-      Battle.battle(player, dragon, scanner);  
-        battle.giveRandomReward11(player, dragon);
-      
-      // 6. 마왕 조우
+      // 4. 생명의호수 스테이지, 중간 체력회복 100
+      System.out.println("지쳐있는 용사앞에 생명의 기운이 넘쳐나는 호수가 보입니다.");
+      System.out.println("[생명의 호수  스테이지에 도착했습니다.]");
 
-        ment.stagesix();
-        devilking.printMent();
-      devilking.printStats();
-      Battle.battle(player, devilking, scanner);  
-        battle.giveRandomReward12(player, devilking);
-        ment.stageseven();
+      System.out.println("1번을 눌러주세요");
+      stageChoice = scanner.nextInt();
+      
+//    player.setHealth(100);
+    
+		player.heal(100, 1);
+		player.displayStats();
 
-      
-      scanner.close();
-      
-   }
+		// 5. 중간보스 (드래곤)
+		ment.stagefive();
+		dragon.printMent();
+		dragon.printStats();
+		Battle.battle(player, dragon, scanner);
+		battle.giveRandomReward11(player, dragon);
+
+		// 6. 마왕 조우
+
+		ment.stagesix();
+		devilking.printMent();
+		devilking.printStats();
+		Battle.battle(player, devilking, scanner);
+		battle.giveRandomReward12(player, devilking);
+		ment.stageseven();
+
+		scanner.close();
+
+	}
 
 }
